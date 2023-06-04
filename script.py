@@ -70,20 +70,21 @@ standard_cleric_exclusives = standard_cleric_spells - evil_cleric_spells - speci
 evil_cleric_exclusives = evil_cleric_spells - standard_cleric_spells - specialist_cleric_spells
 wizard_exclusives = all_spells - wizardry_refined_forbidden - all_cleric_spells - druid_spells
 
-# I don't remembrer what this was supposed to accomplish.
-style_spell_candidates = set()
-for spell_name in wizard_exclusives:
-    if prereq_map.get(spell_name) and \
-            (prereq_map[spell_name][0].intersection(all_cleric_spells) or \
-            prereq_map[spell_name][1] == '0'):
-        style_spell_candidates.add(spell_name)
-"""
-print_set(style_spell_candidates)
+# I wrote this code to help me design a magical style (per GURPS Thuamatology: Magical Styles)
+# Unfortunately, I don't really remember what I was going for with said style
+def print_style_candidates():
+    style_spell_candidates = set()
+    for spell_name in wizard_exclusives:
+        if prereq_map.get(spell_name) and \
+                (prereq_map[spell_name][0].intersection(all_cleric_spells) or \
+                prereq_map[spell_name][1] == '0'):
+            style_spell_candidates.add(spell_name)
 
-for candidate in sorted(list(style_spell_candidates)):
-    if 'Divination' not in candidate and 'Command Spirit' not in candidate:
-        print(f'{candidate}: {prereq_map[candidate][1]}')
-"""
+    print_set(style_spell_candidates)
+
+    for candidate in sorted(list(style_spell_candidates)):
+        if 'Divination' not in candidate and 'Command Spirit' not in candidate:
+            print(f'{candidate}: {prereq_map[candidate][1]}')
 
 # print_set(evil_cleric_exclusives)
 # print_set(standard_cleric_exclusives)
@@ -127,4 +128,3 @@ def to_graphviz(prereq_map):
     return result
 
 print(to_graphviz(prereq_map))
-
