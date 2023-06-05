@@ -1,0 +1,1 @@
+The Graphviz stuff is not at the point where it's terribly useful right now, but if you want to play around with it you'll want to follow the installation instructions [here](https://graphviz.org/download/) then run something like `python3 script.py | dot -Tsvg > air_spells.svg` to generate the SVG file.
