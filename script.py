@@ -30,10 +30,12 @@ def from_different_system(spell_name):
 def print_set(s):
     print(f'{sorted(list(s))} ({len(s)} items)')
 
-def get_prereq_map(file_contents, pattern=SPELL_BLOCK_PATTERN):
+def get_prereq_map(file_contents, pattern=SPELL_BLOCK_PATTERN, string_filter=''):
     spell_blocks = re.findall(pattern, file_contents)
     prereq_map = {}
     for spell_block in spell_blocks:
+        if string_filter not in spell_block:
+            continue
         spell_name = spell_block.split(',')[0]
         # TODO: improve this to handle "or"s.
         prereq_count = re.search(PREREQ_COUNT_PATTERN, spell_block).group()
@@ -127,4 +129,4 @@ def to_graphviz(prereq_map):
 
     return result
 
-print(to_graphviz(prereq_map))
+print(to_graphviz(get_prereq_map(magic, string_filter='Air')))
