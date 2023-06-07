@@ -15,7 +15,7 @@ DRUIDIC_PATTERN = r'(?<=SP:)[\w \(\)\[\]]+Druidic\)'
 UNHOLY_PATTERN = r'(?<=SP:)[\w \(\)\[\]]+Unholy\)'
 CLONE_PATTERN = r'(?<=#Clone "SP:)[\w \(\)\[\]]+(?=")'
 SPELL_BLOCK_PATTERN = r'.+, type.+\n.+\n.+\n?.*Prereq Count: \d.+\)'
-DFRPG_SPELL_BLOCK_PATTERN = r'.+,\n\tcat.+(?:\n.+)+Prerequisites: .+'
+DFRPG_SPELL_BLOCK_PATTERN = r'.+,\n\tcat.+(?:\n\t.+)+Prereq Count: \d+ Prerequisites: .+'
 PREREQ_COUNT_PATTERN = r'(?<=Prereq Count: )\d+'
 PREREQ_PATTERN = r'(?<=Prerequisites: ).+(?=\))'
 
@@ -47,33 +47,63 @@ def get_prereq_map(file_contents, pattern=SPELL_BLOCK_PATTERN, string_filter='')
         prereq_map[spell_name] = [prereqs, prereq_count]
     return prereq_map
 
-
 magic = open(MAGIC_FILENAME).read()
 all_spells = set([spell_name for spell_name in re.findall(SPELL_PATTERN, magic) if not from_different_system(spell_name)])
 
 wizardry_refined = open(WIZARDRY_REFINED_FILENAME).read()
 wizardry_refined_forbidden = set(re.findall(DELETE_PATTERN, wizardry_refined))
 
-adventurers = open(ADVENTURERS_FILENAME).read()
-standard_cleric_spells = set([remove_word(spell_name, 'Holy') for spell_name in re.findall(HOLY_PATTERN, adventurers)])
-druid_spells = set([remove_word(spell_name, 'Druidic') for spell_name in re.findall(DRUIDIC_PATTERN, adventurers)])
+def produce_with_cache(producer, cache={}):
+    if producer not in cache:
+        cache[producer] = producer()
+    return cache[producer]
 
-next_level = open(NEXT_LEVEL_FILENAME).read()
-evil_cleric_spells = set([remove_word(spell_name, 'Unholy') for spell_name in re.findall(UNHOLY_PATTERN, next_level)])
+def _get_adventurers():
+    return open(ADVENTURERS_FILENAME).read()
+
+def get_adventurers(cache=[]):
+    return produce_with_cache(_get_adventurers)
+
+def _get_standard_cleric_spells():
+    return set([remove_word(spell_name, 'Holy') for spell_name in re.findall(HOLY_PATTERN, get_adventurers())])
+    
+def get_standard_cleric_spells():
+    return produce_with_cache(_get_standard_cleric_spells)
+
+def _get_druid_spells():
+    return set([remove_word(spell_name, 'Druidic') for spell_name in re.findall(DRUIDIC_PATTERN, get_adventurers())])
+
+def get_druid_spells(cache=[]):
+    return produce_with_cache(_get_druid_spells)
+
+def _get_next_level():
+    return open(NEXT_LEVEL_FILENAME).read()
+
+def get_next_level():
+    return produce_with_cache(_get_next_level)
+
+def _get_evil_cleric_spells():
+    return set([remove_word(spell_name, 'Unholy') for spell_name in re.findall(UNHOLY_PATTERN, get_next_level)])
+
+def get_evil_cleric_spells():
+    return produce_with_cache(_get_evil_cleric_spells)
 
 clerics = open(CLERICS_FILENAME).read()
 specialist_cleric_spells = set(re.findall(CLONE_PATTERN, clerics))
 
-prereq_map = get_prereq_map(magic)
+# prereq_map = get_prereq_map(magic)
+# wizardry_refined_prereq_map = get_prereq_map(wizardry_refined)
 
-all_cleric_spells = standard_cleric_spells.union(evil_cleric_spells).union(specialist_cleric_spells)
-druid_exclusives = druid_spells - all_cleric_spells
-standard_cleric_exclusives = standard_cleric_spells - evil_cleric_spells - specialist_cleric_spells
-evil_cleric_exclusives = evil_cleric_spells - standard_cleric_spells - specialist_cleric_spells
-wizard_exclusives = all_spells - wizardry_refined_forbidden - all_cleric_spells - druid_spells
+# TODO: These need to be changed to function calls
+# all_cleric_spells = standard_cleric_spells.union(evil_cleric_spells).union(specialist_cleric_spells)
+# druid_exclusives = druid_spells - all_cleric_spells
+# standard_cleric_exclusives = standard_cleric_spells - evil_cleric_spells - specialist_cleric_spells
+# evil_cleric_exclusives = evil_cleric_spells - standard_cleric_spells - specialist_cleric_spells
+# wizard_exclusives = all_spells - wizardry_refined_forbidden - all_cleric_spells - druid_spells
 
 # I wrote this code to help me design a magical style (per GURPS Thuamatology: Magical Styles)
 # Unfortunately, I don't really remember what I was going for with said style
+"""
 def print_style_candidates():
     style_spell_candidates = set()
     for spell_name in wizard_exclusives:
@@ -87,6 +117,7 @@ def print_style_candidates():
     for candidate in sorted(list(style_spell_candidates)):
         if 'Divination' not in candidate and 'Command Spirit' not in candidate:
             print(f'{candidate}: {prereq_map[candidate][1]}')
+"""
 
 # print_set(evil_cleric_exclusives)
 # print_set(standard_cleric_exclusives)
@@ -96,18 +127,9 @@ def print_style_candidates():
 
 dfrpg = open(DFRPG_FILENAME).read()
 dfrpg_prereq_map = get_prereq_map(dfrpg, DFRPG_SPELL_BLOCK_PATTERN)
+
 # print(dfrpg_prereq_map)
 # print(prereq_map)
-
-""" 
-for spell, prereqs in dfrpg_prereq_map.items():
-    standard_prereqs = prereq_map[spell]
-    if True: 
-    # if prereqs[0] != standard_prereqs[0]:
-        print(spell)
-        print(standard_prereqs)
-        print(prereqs)
-"""
 
 def to_graphviz(prereq_map):
     reversed_prereq_map = defaultdict(list)
@@ -129,4 +151,4 @@ def to_graphviz(prereq_map):
 
     return result
 
-print(to_graphviz(get_prereq_map(magic, string_filter='Air')))
+print(to_graphviz(dfrpg_prereq_map))
