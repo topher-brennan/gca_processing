@@ -1,0 +1,18 @@
+digraph {
+    "Lend Language" -> { "Borrow Language" }
+    "Lend Skill" -> { "Borrow Skill" }
+    "Truthsayer" -> { "Compel Truth" }
+    "Soul Rider or Telepathy" -> { "Control Person" }
+    "Borrow Language" -> { "Gift of Letters", "Gift of Tongues" }
+    "3 Written Languages" -> { "Gift of Letters" }
+    "3 Spoken Languages" -> { "Gift of Tongues" }
+    "Sense Emotion" -> { "Hide Emotion", "Persuasion", "Truthsayer" }
+    "Truthsayer or Hide Emotion" -> { "Hide Thoughts" }
+    "3 Communication & Empathy" -> { "Lend Language" }
+    "IQ 11+" -> { "Lend Skill" }
+    "Mind-Sending" -> { "Lend Skill", "Telepathy" }
+    "Truthsayer or Borrow Language" -> { "Mind-Reading" }
+    "Mind-Reading" -> { "Mind-Search", "Mind-Sending", "Soul Rider" }
+    "Control Person" -> { "Possession" }
+    "Sense Foes" -> { "Sense Emotion" }
+}

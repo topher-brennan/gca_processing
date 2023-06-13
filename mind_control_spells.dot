@@ -1,0 +1,19 @@
+digraph {
+    "2 Keen Sense spells" -> { "Alertness" }
+    "Fear" -> { "Bravery", "Panic", "Terror" }
+    "Loyalty" -> { "Charm" }
+    "7 Mind Control" -> { "Charm" }
+    "Forgetfulness" -> { "Command" }
+    "Foolishness" -> { "Daze", "Drunkenness", "Forgetfulness", "Weaken Will" }
+    "Clumsiness" -> { "Drunkenness" }
+    "2 Dull Senses" -> { "Dullness" }
+    "Daze" -> { "Fascinate", "Mass Daze", "Sleep" }
+    "Sense Emotion" -> { "Fear" }
+    "IQ 12+" -> { "Foolishness" }
+    "2 Mind Control" -> { "Loyalty" }
+    "Bravery" -> { "Loyalty" }
+    "IQ 13+" -> { "Mass Daze", "Mass Sleep" }
+    "Sleep" -> { "Mass Sleep" }
+    "Drunkenness" -> { "Sickness" }
+    "6 Mind Control" -> { "Strengthen Will", "Wisdom" }
+}

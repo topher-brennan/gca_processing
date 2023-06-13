@@ -1,0 +1,16 @@
+digraph {
+    "Create Air" -> { "Breathe Water" }
+    "Destroy Water" -> { "Breathe Water", "Dehydrate" }
+    "Cold" -> { "Coolness", "Frostbite" }
+    "Purify Water" -> { "Create Water" }
+    "5 Water" -> { "Dehydrate" }
+    "Create Water" -> { "Destroy Water", "Icy Weapon", "Shape Water" }
+    "Shape Water" -> { "Freeze", "Ice Sphere", "Resist Water", "Swim", "Walk on Water", "Water Jet", "Water Vision" }
+    "Freeze" -> { "Frostbite" }
+    "Ice Sphere or Water Jet" -> { "Ice Dagger" }
+    "Icy Weapon" -> { "Icy Missiles" }
+    "Seek Water" -> { "Purify Water" }
+    "Destroy Water or Umbrella" -> { "Resist Water" }
+    "Levitation" -> { "Swim" }
+    "Shape Water or Shield" -> { "Umbrella" }
+}

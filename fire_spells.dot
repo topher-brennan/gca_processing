@@ -1,0 +1,13 @@
+digraph {
+    "6 Fire" -> { "Burning Touch" }
+    "Heat" -> { "Burning Touch", "Cold", "Flaming Weapon", "Resist Cold", "Warmth" }
+    "Ignite Fire or Seek Fire" -> { "Create Fire" }
+    "Shape Fire" -> { "Deflect Energy", "Fireball", "Flame Jet", "Heat", "Smoke" }
+    "Fireball" -> { "Explosive Fireball", "Fire Cloud" }
+    "Ignite Fire" -> { "Extinguish Fire", "Shape Fire" }
+    "Shape Air" -> { "Fire Cloud" }
+    "Create Fire" -> { "Fireball", "Flame Jet", "Heat" }
+    "Extinguish Fire" -> { "Fireproof", "Smoke" }
+    "Flaming Weapon" -> { "Flaming Missiles" }
+    "Fireproof" -> { "Resist Fire" }
+}

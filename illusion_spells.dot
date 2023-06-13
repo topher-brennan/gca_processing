@@ -1,0 +1,13 @@
+digraph {
+    "Sound" -> { "Complex Illusion" }
+    "Simple Illusion" -> { "Complex Illusion", "Illusion Disguise", "Illusion Shell", "Independence", "Know Illusion" }
+    "Perfect Illusion" -> { "Control Illusion", "Phantom" }
+    "Control Illusion" -> { "Dispel Illusion" }
+    "Independence" -> { "Initiative" }
+    "Wisdom" -> { "Initiative" }
+    "Complex Illusion" -> { "Perfect Illusion" }
+    "Hinder" -> { "Phantom" }
+    "Apportation" -> { "Phantom" }
+    "IQ 11+" -> { "Simple Illusion" }
+    "No Blindness" -> { "Simple Illusion" }
+}

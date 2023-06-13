@@ -1,0 +1,13 @@
+digraph {
+    "Earth to Stone" -> { "Create Earth", "Flesh to Stone" }
+    "Shape Earth" -> { "Earth to Stone", "Earth Vision" }
+    "5 Earth" -> { "Entombment" }
+    "Create Earth" -> { "Purify Earth", "Stone Missile" }
+    "6 Earth" -> { "Purify Earth" }
+    "Seek Earth" -> { "Shape Earth" }
+    "Walk Through Earth" -> { "Steelwraith" }
+    "Earth to Stone or 4 Earth" -> { "Stone to Earth" }
+    "Flesh to Stone" -> { "Stone to Flesh" }
+    "Stone to Earth" -> { "Stone to Flesh" }
+    "4 Earth" -> { "Walk Through Earth" }
+}

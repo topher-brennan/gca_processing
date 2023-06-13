@@ -1,0 +1,9 @@
+digraph {
+    "Shape Air" -> { "Air Jet", "Concussion", "Walk on Air", "Windstorm" }
+    "Thunderclap" -> { "Concussion" }
+    "Purify Air" -> { "Create Air", "No-Smell", "Stench" }
+    "Create Air" -> { "Destroy Air", "Earth to Air", "Shape Air" }
+    "Shape Earth" -> { "Earth to Air" }
+    "Create Earth" -> { "Sandstorm" }
+    "Windstorm" -> { "Sandstorm" }
+}

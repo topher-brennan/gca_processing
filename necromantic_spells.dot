@@ -1,0 +1,12 @@
+digraph {
+    "Repel Spirits" -> { "Astral Block" }
+    "Summon Spirit" -> { "Astral Block", "Command Spirit ([Spirit])" }
+    "1 Spell from 10 Colleges" -> { "Banish" }
+    "Turn Spirit" -> { "Command Spirit ([Spirit])", "Entrap Spirit", "Repel Spirits" }
+    "7 Necromantic" -> { "Entrap Spirit" }
+    "Banish" -> { "Repel Spirits" }
+    "Sense Life or Death Vision" -> { "Sense Spirit" }
+    "Death Vision" -> { "Summon Spirit" }
+    "Fear" -> { "Turn Spirit" }
+    "Sense Spirit" -> { "Turn Spirit" }
+}

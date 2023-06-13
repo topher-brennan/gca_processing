@@ -1,0 +1,17 @@
+digraph {
+    "Identify Spell" -> { "Analyze Magic" }
+    "Sense Spirit" -> { "Astral Vision", "Projection" }
+    "See Invisible" -> { "Astral Vision" }
+    "Detect Magic" -> { "Aura", "Identify Spell", "Mage Sight", "Seek Magic" }
+    "5 Knowledge or Earth Vision" -> { "Glass Wall" }
+    "Trace" -> { "History" }
+    "Tell Position" -> { "Know Location" }
+    "IQ 12+" -> { "Pathfinder", "Seeker" }
+    "2 Seek spells" -> { "Pathfinder", "Seeker" }
+    "4 Knowledge" -> { "Projection" }
+    "Aura" -> { "See Secrets" }
+    "Seeker" -> { "See Secrets", "Trace" }
+    "Measurement" -> { "Tell Position", "Test Load" }
+    "Keen Vision" -> { "Wizard Eye" }
+    "Apportation" -> { "Wizard Eye" }
+}

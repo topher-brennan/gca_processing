@@ -1,0 +1,15 @@
+digraph {
+    "Trace Teleport" -> { "Divert Teleport" }
+    "ST:IQ >= 13" -> { "Trace Teleport", "Blink" }
+    "1 Spell from 10 Colleges" -> { "Trace Teleport", "Blink" }
+    "Blink" -> { "Blink Other" }
+    "Apportation" -> { "Deflect Missile", "Levitation", "Light Tread", "Lighten Burden", "Locksmith", "Slow Fall", "Wallwalker" }
+    "6 Movement" -> { "Ethereal Body" }
+    "Levitation" -> { "Flight" }
+    "Haste" -> { "Glue", "Grease", "Great Haste", "Quick March", "Slow" }
+    "IQ 12+" -> { "Great Haste" }
+    "Shape Earth" -> { "Light Tread" }
+    "Apportation or Locksmith" -> { "Lockmaster" }
+    "Locksmith" -> { "Manipulate", "Undo" }
+    "Hinder" -> { "Slow" }
+}

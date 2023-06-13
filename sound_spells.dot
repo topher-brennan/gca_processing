@@ -1,0 +1,13 @@
+digraph {
+    "Voices" -> { "Delayed Message", "Garble", "Great Voice", "Silver Tongue" }
+    "Sense Life" -> { "Delayed Message" }
+    "4 Sound" -> { "Far-Hearing", "Resist Sound" }
+    "Thunderclap" -> { "Great Voice" }
+    "Silence" -> { "Hush", "Wall of Silence" }
+    "Hush" -> { "Mage-Stealth" }
+    "Great Voice" -> { "Message", "Sound Jet" }
+    "Seeker" -> { "Message" }
+    "Wall of Silence" -> { "Noise" }
+    "Sound" -> { "Silence", "Thunderclap", "Voices" }
+    "5 Mind Control" -> { "Silver Tongue" }
+}

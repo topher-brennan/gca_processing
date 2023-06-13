@@ -1,0 +1,16 @@
+digraph {
+    "Darkness" -> { "Blackout", "Blur" }
+    "Keen Vision or 5 Light & Darkness" -> { "Bright Vision", "Hawk Vision", "Infravision", "Night Vision" }
+    "Light" -> { "Colors", "Continual Light" }
+    "Night Vision or Infravision" -> { "Dark Vision" }
+    "Continual Light" -> { "Darkness", "Glow" }
+    "Blur or Forgetfulness" -> { "Hide" }
+    "6 Light & Darkness" -> { "Invisibility", "Sunbolt" }
+    "Blur" -> { "Invisibility" }
+    "Continual Light or Shape Light" -> { "Light Jet" }
+    "Colors" -> { "Mirror", "Sunlight" }
+    "Infravision or Invisibility" -> { "See Invisible" }
+    "Dark Vision" -> { "See Invisible" }
+    "Sunlight" -> { "Sunbolt" }
+    "Glow" -> { "Sunlight" }
+}

@@ -1,0 +1,7 @@
+digraph {
+    "Lightning" -> { "Explosive Lightning", "Lightning Weapon", "Shocking Touch", "Spark Cloud", "Spark Storm", "Wall of Lightning" }
+    "6 Air" -> { "Lightning", "Resist Lightning" }
+    "Lightning Weapon" -> { "Lightning Missiles" }
+    "Shape Air" -> { "Spark Cloud" }
+    "Windstorm" -> { "Spark Storm" }
+}

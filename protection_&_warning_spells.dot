@@ -1,0 +1,12 @@
+digraph {
+    "Shield" -> { "Armor", "Bladeturning" }
+    "DX 11+" -> { "Iron Arm" }
+    "Resist Pain" -> { "Iron Arm" }
+    "Apportation or Shield" -> { "Missile Shield" }
+    "either Watchdog or Shield" -> { "Mystic Mist" }
+    "Sense Danger" -> { "Nightingale", "Watchdog" }
+    "Mirror" -> { "Reflect Gaze" }
+    "Sense Foes" -> { "Sense Danger" }
+    "Watchdog" -> { "Teleport Shield" }
+    "Spell Shield" -> { "Teleport Shield" }
+}

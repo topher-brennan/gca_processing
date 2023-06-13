@@ -1,0 +1,8 @@
+digraph {
+    "Counterspell 12 other Spells" -> { "Dispel Magic" }
+    "Ward" -> { "Great Ward", "Reflect" }
+    "1 Spell from 7 Colleges" -> { "Magic Resistance" }
+    "Spell Shield" -> { "Pentagram" }
+    "Scryguard" -> { "Spell Shield" }
+    "Magic Resistance" -> { "Spell Shield" }
+}

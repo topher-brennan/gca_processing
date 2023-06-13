@@ -1,0 +1,19 @@
+digraph {
+    "Restore" -> { "Copy", "Rejoin" }
+    "5 Making & Breaking" -> { "Copy" }
+    "1 Written Language" -> { "Copy" }
+    "Knot" -> { "Fasten" }
+    "1 Water" -> { "Find Weakness" }
+    "1 Fire" -> { "Find Weakness" }
+    "1 Earth" -> { "Find Weakness" }
+    "1 Air" -> { "Find Weakness" }
+    "Stiffen" -> { "Knot" }
+    "Measurement" -> { "Mapmaker" }
+    "Copy" -> { "Mapmaker" }
+    "Weaken" -> { "Rejoin", "Shatter" }
+    "Rejoin" -> { "Repair", "Stiffen" }
+    "Find Weakness or Simple Illusion" -> { "Restore" }
+    "Shatter" -> { "Rive", "Shatterproof" }
+    "Repair" -> { "Sharpen", "Shatterproof" }
+    "Find Weakness" -> { "Weaken" }
+}

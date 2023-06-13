@@ -1,0 +1,10 @@
+digraph {
+    "Test Food" -> { "Cook", "Decay" }
+    "Create Fire" -> { "Cook" }
+    "Cook" -> { "Create Food" }
+    "Seek Food" -> { "Create Food", "Far-Tasting" }
+    "6 Food" -> { "Essential Food" }
+    "Create Food" -> { "Essential Food" }
+    "Purify Food" -> { "Poison Food", "Prepare Game" }
+    "Decay" -> { "Purify Food" }
+}

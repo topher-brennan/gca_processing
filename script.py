@@ -19,6 +19,33 @@ DFRPG_SPELL_BLOCK_PATTERN = r'.+,\n\tcat.+(?:\n\t.+)+Prereq Count: \d+ Prerequis
 PREREQ_COUNT_PATTERN = r'(?<=Prereq Count: )\d+'
 PREREQ_PATTERN = r'(?<=Prerequisites: ).+(?=\))'
 
+DFRPG_COLLEGE_PATTERN_START = r'.+,\n\tcat\('
+DFRPG_COLLEGE_PATTERN_END = r'.+(?:\n\t.+)+Prereq Count: \d+ Prerequisites: .+'
+
+COLLEGES = [
+    'Air',
+    'Body Control',
+    'Communication & Empathy',
+    'Earth',
+    'Fire',
+    'Food',
+    'Gate',
+    'Healing',
+    'Illusion',
+    'Knowledge',
+    'Light & Darkness',
+    'Making & Breaking',
+    'Meta-Spells',
+    'Mind Control',
+    'Movement',
+    'Necromantic',
+    'Protection & Warning',
+    'Sound',
+    'Water',
+    'Weather',
+]
+
+
 def remove_word(string, word):
     string = ''.join(string.split(f' ({word})'))
     string = ''.join(string.split(f'; {word}'))
@@ -41,7 +68,7 @@ def get_prereq_map(file_contents, pattern=SPELL_BLOCK_PATTERN, string_filter='')
         prereq_count = re.search(PREREQ_COUNT_PATTERN, spell_block).group()
         prereqs_match = re.search(PREREQ_PATTERN, spell_block)
         if prereqs_match:
-            prereqs = set(prereqs_match.group().split(', '))
+            prereqs = set([prereq.replace('and ', '') for prereq in prereqs_match.group().split(', ')])
         else:
             prereqs = set()
         prereq_map[spell_name] = [prereqs, prereq_count]
@@ -151,4 +178,8 @@ def to_graphviz(prereq_map):
 
     return result
 
-print(to_graphviz(dfrpg_prereq_map))
+for college in COLLEGES:
+    pattern = DFRPG_COLLEGE_PATTERN_START + re.escape(college) + DFRPG_COLLEGE_PATTERN_END
+    snake_case_college = college.lower().replace(" ", "_")
+    file_name = f"{snake_case_college}_spells.dot"
+    open(file_name, 'w').write(to_graphviz(get_prereq_map(dfrpg, pattern)))

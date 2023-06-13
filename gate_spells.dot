@@ -1,0 +1,7 @@
+digraph {
+    "Seek Gate" -> { "Control Gate", "Scry Gate" }
+    "Ethereal Body" -> { "Phase" }
+    "Phase" -> { "Phase Other" }
+    "Seek Magic" -> { "Seek Gate" }
+    "1 Spell from 10 Colleges" -> { "Seek Gate" }
+}

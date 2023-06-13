@@ -1,0 +1,22 @@
+digraph {
+    "Sensitize" -> { "Agonize" }
+    "Grace" -> { "Ambidexterity", "Balance", "Reflexes" }
+    "Spasm" -> { "Clumsiness", "Pain", "Retch", "Strike Blind", "Strike Deaf", "Strike Dumb", "Tickle" }
+    "Wither Limb" -> { "Deathtouch" }
+    "Lend Energy" -> { "Frailty", "Might" }
+    "Clumsiness" -> { "Grace", "Paralyze Limb", "Tanglefoot" }
+    "Haste or Clumsiness" -> { "Hinder" }
+    "Vigor" -> { "Hold Breath" }
+    "5 Body Control" -> { "Nauseate", "Paralyze Limb" }
+    "Haste" -> { "Reflexes" }
+    "Pain" -> { "Resist Pain", "Stun" }
+    "Nauseate" -> { "Retch" }
+    "Hinder" -> { "Rooted Feet" }
+    "Tanglefoot" -> { "Roundabout" }
+    "Stun" -> { "Sensitize" }
+    "Itch" -> { "Spasm" }
+    "2 Light & Darkness" -> { "Strike Blind" }
+    "2 Sound" -> { "Strike Deaf" }
+    "Paralyze Limb" -> { "Total Paralysis", "Wither Limb" }
+    "Frailty or Might" -> { "Vigor" }
+}
